@@ -25,8 +25,8 @@ int main()
   SimInfo info;
   
   // *********  Inputs  ***********
-  info.nx               = 128;
-  info.ny               = 128;
+  info.nx               = 1024;
+  info.ny               = 1024;
   info.dx               = 1.0 / info.nx;
   info.dy               = 1.0 / info.ny;
   info.t0               = 0.0;
