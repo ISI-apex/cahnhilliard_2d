@@ -45,7 +45,7 @@ cd [/PATH/TO]/cahnhilliard_2d/cpp
 mkdir build/
 cd build/
 cmake ../
-make
+make ch2d
 ```
 
 This should (1) build all C++ source into the static library `libch_src.a` that one can link any client code against, (2) build an example C++ driver into the executable `ch2d`, and (3) build Python wrappers to the code using Swig, and store them in `cpp/swig`. To test, the C++ executable can be run in the usual way:
@@ -77,6 +77,12 @@ This subdirectory contains earlier prototyping code in pure Python, but support 
 
 # Visualization
 Some lightweight Python scripts are provided in `visualization/` for convenience. You will have to edit the necessary options/filepaths to be consistent with the state files you are trying to read/display.
+
+To plot single frames into `C_*.pdf` file per frame, run:
+
+```shell
+python visualization/plot2d.py
+```
 
 # Parallel Scaling
 The solver is parallelized using shared memory with OpenMP. Here are some small scaling studies, using no thermal behavior and constant CH coefficients. In what follows:
