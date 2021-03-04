@@ -5,6 +5,11 @@
 #include <omp.h>
 #include "run_ch_solver.h"
 
+static inline int min(int a, int b)
+{
+  return a < b ? a : b;
+}
+
 int main()
 {
 
@@ -37,6 +42,7 @@ int main()
   chparams.sigma_noise  = 0.0;
   
   int n_tsteps        = 25;
+  int calced_tsteps   = 2; // timesteps actually computed (no effect on sim)
   double n_dt         = 300.0;
   // ******************************
 
@@ -55,7 +61,7 @@ int main()
   std::cout << "Linear timescale dt_lin = " << dt_lin/dt_biharm << " dt_biharm" << std::endl;
 
   // Run solver
-  for (int i=0; i<n_tsteps; i++) {
+  for (int i=0; i < min(n_tsteps, calced_tsteps); i++) {
     info.t0 = i * dt_check;
     info.tf = (i+1) * dt_check;
     std::cout << "t0 = " << info.t0/dt_biharm << " dt_biharm , tf = " << info.tf/dt_biharm << " dt_biharm" << std::endl;
